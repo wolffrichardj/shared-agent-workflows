@@ -9,13 +9,21 @@ We assume the reader (and the agent) knows how to run basic commands but we also
 2.  **Enforce Architecture**: Act as a Lead Architect to audit code against abstract principles.
 3.  **Maintain Self-Consistency**: Keep documentation and project state aligned.
 
-## Available Skills (`skills/`)
+## Structure
 
-- **`activity-summary`**:  Generates a human-readable "Daily Standup" report by synthesizing git logs and conversation history to infer *intent* and *themes* of work, not just a list of commits.
+The repository is organized by the **tool** or **agent** the skills are designed for, as different agents have different capabilities and context availabilities.
 
-## Workflows (`workflows/`)
+### `antigravity/`
+Skills and workflows optimized for **Google Antigravity**. Use these if you are using the Antigravity editor or agent.
+- **Skills**: `antigravity/skills/` (e.g., `daily-activity` which uses Antigravity's specific conversation history context).
+- **Workflows**: `antigravity/workflows/`
 
-- **`summary`**: Runs the activity summarization.
+## Workflows (`antigravity/workflows/`)
+
+- **`daily-activity`**: Runs the activity summarization skill.
+
+### `generic/` (Planned)
+Universal skills that work across any agent (Cursor, Claude Code, etc.) that acts on the file system or standard git commands, without relying on tool-specific context blocks.
 
 ## Usage
 

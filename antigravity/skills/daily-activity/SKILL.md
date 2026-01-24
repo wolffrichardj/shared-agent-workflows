@@ -1,5 +1,5 @@
 ---
-name: activity-summary
+name: daily-activity
 description: Generate a summary of activity for a specified date or today.
 ---
 
