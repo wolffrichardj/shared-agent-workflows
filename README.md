@@ -22,8 +22,11 @@ Skills and workflows optimized for **Google Antigravity**. Use these if you are 
 
 - **`daily-activity`**: Runs the activity summarization skill.
 
-### `generic/` (Planned)
-Universal skills that work across any agent (Cursor, Claude Code, etc.) that acts on the file system or standard git commands, without relying on tool-specific context blocks.
+### `generic/` (current)
+Universal skills that work across any agent (Cursor, Claude Code, Codex, Antigravity, etc.) that acts on the file system or standard git commands, without relying on tool-specific context blocks. See [`generic/README.md`](generic/README.md).
+
+- **[`document-acquisition-bakeoff`](generic/skills/document-acquisition-bakeoff/SKILL.md)**: Rank acquisition routes and write a deterministic, secret-free collector path under operator-supplied `code_root`.
+- **[`document-acquisition-harness`](generic/skills/document-acquisition-harness/SKILL.md)**: Load the baked winning route from `code_root` at acquisition time (no rediscovery).
 
 ## Usage
 

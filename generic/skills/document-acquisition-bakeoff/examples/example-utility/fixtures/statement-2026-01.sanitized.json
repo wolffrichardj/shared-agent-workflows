@@ -1,0 +1,11 @@
+{
+  "fixture_kind": "sanitized_statement_metadata",
+  "provider_id": "example-utility",
+  "statement_id": "stmt_synth_0001",
+  "period_id": "2026-01",
+  "issued_on": "2026-02-03",
+  "mime": "application/pdf",
+  "byte_length": 1024,
+  "sha256": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+  "content_note": "Synthetic metadata only. No PDF bytes, account numbers, or real institution data."
+}
