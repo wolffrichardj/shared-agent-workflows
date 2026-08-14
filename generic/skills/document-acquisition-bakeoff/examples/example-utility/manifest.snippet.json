@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "provider_id": "example-utility",
+  "display_name": "Example Utility (synthetic)",
+  "routes": [
+    {
+      "id": "api",
+      "precedence": 1,
+      "status": "winner",
+      "transport": "api",
+      "request_shape": {
+        "method": "GET",
+        "path_template": "/api/v1/statements/{period_id}",
+        "accept": "application/pdf",
+        "notes": "Period id from list endpoint; no secrets in shape."
+      },
+      "same_content": {
+        "identity_markers": ["period_id", "statement_id"],
+        "mime_magic": "application/pdf",
+        "checksum": "sha256"
+      },
+      "fixture_ref": "fixtures/statement-2026-01.sanitized.json",
+      "refresh_triggers": ["new_period_available", "manual_operator_refresh"],
+      "blockers": [],
+      "bytes_class": "provider_native"
+    },
+    {
+      "id": "ui",
+      "precedence": 4,
+      "status": "candidate_not_selected",
+      "transport": "ui",
+      "request_shape": {
+        "flow": "Statements → period row → Download PDF",
+        "notes": "Works but less stable than api; retained for audit only."
+      },
+      "same_content": {
+        "identity_markers": ["period_id"],
+        "mime_magic": "application/pdf",
+        "checksum": "sha256"
+      },
+      "fixture_ref": null,
+      "refresh_triggers": ["manual_operator_refresh"],
+      "blockers": ["ui_layout_drift"],
+      "bytes_class": "provider_native"
+    }
+  ],
+  "bakeoff_summary": {
+    "candidates_tried": ["api", "ui"],
+    "winner": "api",
+    "reason": "Stable request shape, native PDF bytes, deeper archive via period list than UI pagination."
+  }
+}
