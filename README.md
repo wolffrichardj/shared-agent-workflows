@@ -22,8 +22,12 @@ Skills and workflows optimized for **Google Antigravity**. Use these if you are 
 
 - **`daily-activity`**: Runs the activity summarization skill.
 
-### `generic/` (Planned)
-Universal skills that work across any agent (Cursor, Claude Code, etc.) that acts on the file system or standard git commands, without relying on tool-specific context blocks.
+### `generic/`
+Portable instructions that do not rely on tool-specific context blocks. Use depends on each host's capabilities and policies; see each package's requirements.
+
+- **[Reinforce](generic/skills/reinforce/README.md)**: Persist an explicitly stated lesson in approved memory, an owning workflow, a deterministic helper, or authoritative project guidance.
+
+The MIT license in `generic/skills/reinforce/` applies only to that package. This addition leaves the licensing of other repository material unchanged.
 
 ## Usage
 
@@ -35,4 +39,4 @@ git clone https://github.com/wolffrichardj/shared-agent-workflows agent-workflow
 
 To use a skill, simply add the relevant `SKILL.md` file to your AI agent's context (e.g. via `@file` reference).
 
-**Compatibility**: These workflows are designed to work with **any** advanced AI coding assistant (like Cursor or Claude Code). They are currently tested and validated primarily with **Antigravity**.
+**Compatibility**: Host capabilities and native skill discovery differ. See each package for requirements and usage. Existing Antigravity workflows were primarily tested with **Antigravity**; Reinforce has separate portable file-reference instructions and does not claim universal host compatibility.
