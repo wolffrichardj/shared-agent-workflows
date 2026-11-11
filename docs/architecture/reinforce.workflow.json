@@ -1,0 +1,511 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Reinforce: portable instructions, host-owned persistence",
+    "locale": "en",
+    "output": "docs/architecture/reinforce.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/wolffrichardj/shared-agent-workflows.git",
+      "revision": "9d5347f5689268567d6d70f43a95a6c439f380b4",
+      "provider": "github",
+      "link_mode": "web"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "Host / build actions"
+        },
+        "external": {
+          "label": "Inputs / owning homes"
+        },
+        "security": {
+          "label": "Conditions / stops"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "host",
+      "label": "Authorized reinforcement \u2014 instructions followed by the host, not a runtime"
+    },
+    {
+      "id": "stop",
+      "label": "Dependent work stops \u2014 independent clear work may continue",
+      "variant": "exception"
+    },
+    {
+      "id": "package",
+      "label": "Package distribution \u2014 executable builder, consumer verification"
+    },
+    {
+      "id": "source",
+      "label": "Consumer alternatives \u2014 failed ZIP stops; public source bypasses ZIP"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "inputs",
+      "lane": "package",
+      "col": 0,
+      "type": "external",
+      "label": "Five inputs",
+      "sublabel": "VERSION + allowlist",
+      "sources": [
+        {
+          "path": "scripts/package_reinforce.py",
+          "line": 20,
+          "end_line": 31
+        }
+      ]
+    },
+    {
+      "id": "builder",
+      "lane": "package",
+      "col": 1,
+      "type": "backend",
+      "label": "Python builder",
+      "sublabel": "fixed ZIP metadata",
+      "sources": [
+        {
+          "path": "scripts/package_reinforce.py",
+          "line": 16,
+          "end_line": 45
+        }
+      ]
+    },
+    {
+      "id": "archive",
+      "lane": "package",
+      "col": 2,
+      "type": "external",
+      "label": "ZIP + SHA256",
+      "sublabel": "named package only",
+      "sources": [
+        {
+          "path": "scripts/package_reinforce.py",
+          "line": 33,
+          "end_line": 44
+        },
+        {
+          "path": "generic/skills/reinforce/README.md",
+          "line": 15,
+          "end_line": 28
+        }
+      ]
+    },
+    {
+      "id": "checksum",
+      "lane": "package",
+      "col": 3,
+      "type": "security",
+      "label": "Verify bytes",
+      "sublabel": "stop on mismatch",
+      "sources": [
+        {
+          "path": "generic/skills/reinforce/README.md",
+          "line": 19,
+          "end_line": 28
+        }
+      ]
+    },
+    {
+      "id": "review",
+      "lane": "package",
+      "col": 4,
+      "type": "backend",
+      "label": "Review skill",
+      "sublabel": "read SKILL.md",
+      "sources": [
+        {
+          "path": "generic/skills/reinforce/README.md",
+          "line": 28,
+          "end_line": 38
+        }
+      ]
+    },
+    {
+      "id": "reference",
+      "lane": "package",
+      "col": 5,
+      "type": "external",
+      "label": "Use instructions",
+      "sublabel": "file reference",
+      "sources": [
+        {
+          "path": "generic/skills/reinforce/README.md",
+          "line": 30,
+          "end_line": 38
+        },
+        {
+          "path": "generic/skills/reinforce/README.md",
+          "line": 40,
+          "end_line": 55
+        }
+      ]
+    },
+    {
+      "id": "direct",
+      "lane": "source",
+      "col": 4,
+      "type": "external",
+      "label": "Public SKILL.md",
+      "sublabel": "direct source route",
+      "sources": [
+        {
+          "path": "generic/skills/reinforce/README.md",
+          "line": 30,
+          "end_line": 38
+        },
+        {
+          "path": "README.md",
+          "line": 42,
+          "end_line": 44
+        }
+      ]
+    },
+    {
+      "id": "lesson",
+      "lane": "host",
+      "col": 0,
+      "type": "external",
+      "label": "Explicit lesson",
+      "sublabel": "user request only",
+      "sources": [
+        {
+          "path": "generic/skills/reinforce/SKILL.md",
+          "line": 8,
+          "end_line": 12
+        }
+      ]
+    },
+    {
+      "id": "inspect",
+      "lane": "host",
+      "col": 1,
+      "type": "backend",
+      "label": "Find the owner",
+      "sublabel": "distill + inspect",
+      "sources": [
+        {
+          "path": "generic/skills/reinforce/SKILL.md",
+          "line": 12,
+          "end_line": 21
+        }
+      ]
+    },
+    {
+      "id": "authority",
+      "lane": "host",
+      "col": 2,
+      "type": "security",
+      "label": "Authority clear?",
+      "sublabel": "lesson / owner / home",
+      "sources": [
+        {
+          "path": "generic/skills/reinforce/SKILL.md",
+          "line": 23,
+          "end_line": 29
+        }
+      ]
+    },
+    {
+      "id": "memory",
+      "lane": "host",
+      "col": 3,
+      "type": "external",
+      "label": "Approved memory",
+      "sublabel": "preference / standing",
+      "sources": [
+        {
+          "path": "generic/skills/reinforce/SKILL.md",
+          "line": 14,
+          "end_line": 16
+        },
+        {
+          "path": "generic/skills/reinforce/SKILL.md",
+          "line": 25,
+          "end_line": 29
+        }
+      ],
+      "yOffset": -135.0
+    },
+    {
+      "id": "workflow",
+      "lane": "host",
+      "col": 3,
+      "type": "external",
+      "label": "Owning workflow",
+      "sublabel": "execution rule",
+      "sources": [
+        {
+          "path": "generic/skills/reinforce/SKILL.md",
+          "line": 17,
+          "end_line": 21
+        },
+        {
+          "path": "generic/skills/reinforce/SKILL.md",
+          "line": 25,
+          "end_line": 29
+        }
+      ],
+      "yOffset": -45.0
+    },
+    {
+      "id": "helper",
+      "lane": "host",
+      "col": 3,
+      "type": "external",
+      "label": "Owning helper",
+      "sublabel": "repeatable logic",
+      "sources": [
+        {
+          "path": "generic/skills/reinforce/SKILL.md",
+          "line": 18,
+          "end_line": 21
+        },
+        {
+          "path": "generic/skills/reinforce/SKILL.md",
+          "line": 25,
+          "end_line": 29
+        }
+      ],
+      "yOffset": 45.0
+    },
+    {
+      "id": "canonical",
+      "lane": "host",
+      "col": 3,
+      "type": "external",
+      "label": "Project authority",
+      "sublabel": "canonical placement",
+      "sources": [
+        {
+          "path": "generic/skills/reinforce/SKILL.md",
+          "line": 19,
+          "end_line": 21
+        },
+        {
+          "path": "generic/skills/reinforce/SKILL.md",
+          "line": 25,
+          "end_line": 29
+        }
+      ],
+      "yOffset": 135.0
+    },
+    {
+      "id": "change",
+      "lane": "host",
+      "col": 4,
+      "type": "backend",
+      "label": "Host changes",
+      "sublabel": "authorized surface",
+      "sources": [
+        {
+          "path": "generic/skills/reinforce/SKILL.md",
+          "line": 23,
+          "end_line": 33
+        }
+      ]
+    },
+    {
+      "id": "readback",
+      "lane": "host",
+      "col": 5,
+      "type": "backend",
+      "label": "Verify + report",
+      "sublabel": "read back actual result",
+      "sources": [
+        {
+          "path": "generic/skills/reinforce/SKILL.md",
+          "line": 31,
+          "end_line": 35
+        }
+      ]
+    },
+    {
+      "id": "blocked",
+      "lane": "stop",
+      "col": 2,
+      "type": "security",
+      "label": "Ask; write waits",
+      "sublabel": "no invented destination",
+      "sources": [
+        {
+          "path": "generic/skills/reinforce/SKILL.md",
+          "line": 8,
+          "end_line": 8
+        },
+        {
+          "path": "generic/skills/reinforce/SKILL.md",
+          "line": 25,
+          "end_line": 29
+        }
+      ]
+    },
+    {
+      "id": "badzip",
+      "lane": "source",
+      "col": 3,
+      "type": "security",
+      "label": "Reject ZIP use",
+      "sublabel": "checksum mismatch",
+      "sources": [
+        {
+          "path": "generic/skills/reinforce/README.md",
+          "line": 19,
+          "end_line": 28
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "build",
+      "from": "inputs",
+      "to": "builder"
+    },
+    {
+      "id": "write-archive",
+      "from": "builder",
+      "to": "archive",
+      "label": "write"
+    },
+    {
+      "id": "download",
+      "from": "archive",
+      "to": "checksum",
+      "label": "download"
+    },
+    {
+      "id": "verified",
+      "from": "checksum",
+      "to": "review",
+      "label": "passes"
+    },
+    {
+      "id": "reviewed-reference",
+      "from": "review",
+      "to": "reference"
+    },
+    {
+      "id": "direct-review",
+      "from": "direct",
+      "to": "review",
+      "label": "review source"
+    },
+    {
+      "id": "zip-failed",
+      "from": "checksum",
+      "to": "badzip",
+      "role": "error",
+      "variant": "security",
+      "label": "fails"
+    },
+    {
+      "id": "explicit",
+      "from": "lesson",
+      "to": "inspect"
+    },
+    {
+      "id": "owner-known",
+      "from": "inspect",
+      "to": "authority"
+    },
+    {
+      "id": "select-memory",
+      "from": "authority",
+      "to": "memory",
+      "label": "preference"
+    },
+    {
+      "id": "change-memory",
+      "from": "memory",
+      "to": "change",
+      "variant": "default",
+      "label": "authorized"
+    },
+    {
+      "id": "select-workflow",
+      "from": "authority",
+      "to": "workflow",
+      "label": "workflow rule"
+    },
+    {
+      "id": "change-workflow",
+      "from": "workflow",
+      "to": "change",
+      "variant": "default",
+      "label": "authorized"
+    },
+    {
+      "id": "select-helper",
+      "from": "authority",
+      "to": "helper",
+      "label": "repeated logic"
+    },
+    {
+      "id": "change-helper",
+      "from": "helper",
+      "to": "change",
+      "variant": "default",
+      "label": "authorized"
+    },
+    {
+      "id": "select-canonical",
+      "from": "authority",
+      "to": "canonical",
+      "label": "placement"
+    },
+    {
+      "id": "change-canonical",
+      "from": "canonical",
+      "to": "change",
+      "variant": "default",
+      "label": "authorized"
+    },
+    {
+      "id": "readback-result",
+      "from": "change",
+      "to": "readback"
+    },
+    {
+      "id": "missing",
+      "from": "authority",
+      "to": "blocked",
+      "role": "error",
+      "variant": "security",
+      "label": "missing / unclear",
+      "fromSide": "bottom",
+      "toSide": "top"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Owning behavior",
+      "items": [
+        "Four homes are alternatives, not four writes.",
+        "Memory supplements discovery; workflow and canonical repairs belong with their owner."
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Trust and limits",
+      "items": [
+        "Installing instructions grants no permissions or configured memory.",
+        "ZIP integrity does not establish native discovery or correct host behavior."
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Actual result",
+      "items": [
+        "Host reads back changed content or provider result.",
+        "Report proposal, active persistence or unavailable write accurately."
+      ]
+    }
+  ]
+}
