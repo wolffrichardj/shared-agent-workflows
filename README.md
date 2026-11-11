@@ -25,7 +25,9 @@ Skills and workflows optimized for **Google Antigravity**. Use these if you are 
 ### `generic/`
 Portable instructions that do not rely on tool-specific context blocks. Use depends on each host's capabilities and policies; see each package's requirements.
 
-- **[Reinforce](generic/skills/reinforce/README.md)**: Persist an explicitly stated lesson in approved memory, an owning workflow, a deterministic helper, or authoritative project guidance.
+- **[Reinforce 0.1.0](generic/skills/reinforce/README.md)**: Persist an explicitly stated lesson in approved memory, an owning workflow, a deterministic helper, or authoritative project guidance.
+
+Reinforce is versioned independently with `reinforce-v*` tags. Its package README includes verified-download, manual installation, and release notes. Named release assets contain only Reinforce; automatic source archives contain the full repository.
 
 The MIT license in `generic/skills/reinforce/` applies only to that package. This addition leaves the licensing of other repository material unchanged.
 
