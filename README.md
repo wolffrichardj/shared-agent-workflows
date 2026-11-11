@@ -31,6 +31,21 @@ Reinforce is versioned independently with `reinforce-v*` tags. Its package READM
 
 The MIT license in `generic/skills/reinforce/` applies only to that package. This addition leaves the licensing of other repository material unchanged.
 
+## How Reinforce works
+
+**Put execution rules where behavior is owned.** Reinforce routes an explicit lesson to approved memory, the owning workflow, a deterministic helper, or authoritative project guidance. The host makes authorized changes and reads back the result. An unclear owner or missing approved destination blocks the dependent write.
+
+<a href="docs/architecture/README.md">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/architecture/reinforce-dark.svg">
+  <img src="docs/architecture/reinforce.svg" alt="Reinforce routes explicit lessons through authority checks to four owning surfaces, with a separate reproducible package path.">
+</picture>
+</a>
+
+Read the [architecture and source evidence](docs/architecture/README.md), or download [the standalone interactive diagram](docs/architecture/reinforce.html) and open it locally. GitHub's HTML file view does not run the viewer.
+
+The reproducible five-file package establishes instruction integrity; it does not establish native discovery, cross-host behavior or successful persistence.
+
 ## Usage
 
 Clone the repository into your project or a general code directory:
